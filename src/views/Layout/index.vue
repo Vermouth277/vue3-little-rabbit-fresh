@@ -10,7 +10,7 @@ import LayoutNav from './components/LayoutNav.vue'
   <LayoutFixed/>
   <LayoutNav/>
   <LayoutHeader/>
-  <div></div>
+  <RouterView/>
   <LayoutFooter/>
 </template>
 
