@@ -1,4 +1,5 @@
 # vue3-little-rabbit-fresh
+# vue3-little-rabbit-fresh
 
 This template should help get you started developing with Vue 3 in Vite.
 
