@@ -15,7 +15,5 @@ import LayoutNav from './components/LayoutNav.vue'
 </template>
 
 <style scoped lang="scss">
-div {
-  height: 2000px;
-}
+
 </style>
