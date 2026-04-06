@@ -7,6 +7,7 @@ import { lazyPlugin } from './directives'
 import { componentPlugin } from './components'
 
 import './styles/common.scss'
+import './assets/iconfont/iconfont.css'
 
 createApp(App)
 .use(createPinia())

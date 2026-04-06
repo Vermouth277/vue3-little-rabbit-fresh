@@ -1,0 +1,23 @@
+{
+  "id": "5154484",
+  "name": "小兔鲜",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "47275054",
+      "name": "chevron_right",
+      "font_class": "chevron_right",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "47275026",
+      "name": "chevron_left_2",
+      "font_class": "chevron_left_2",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    }
+  ]
+}

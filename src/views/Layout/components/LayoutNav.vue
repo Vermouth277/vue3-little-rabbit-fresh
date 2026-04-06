@@ -1,7 +1,14 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const flag = ref(true)
+const router = useRouter()
+
+const confirm = () => {
+  router.push('/login')
+  console.log('确认退出')
+}
 
 </script>
 
@@ -12,7 +19,7 @@ const flag = ref(true)
         <template v-if="flag">
           <li><a href="javascript:;"><i class="icofont icon-user"></i>苦艾酒</a></li>
           <li>
-            <el-popconfirm title="确认退出吗？" confirmButtonText="确认" cancelButtonText="取消">
+            <el-popconfirm title="确认退出吗？" confirmButtonText="确认" cancelButtonText="取消" @confirm="confirm">
               <template #reference>
                 <a href="javascript:;">退出登录</a>
               </template>
