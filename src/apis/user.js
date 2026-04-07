@@ -6,7 +6,7 @@ export const loginAPI = ({ account, password }) => {
     url: 'login',
     method: 'POST',
     data: {
-      username: account,
+      account,
       password
     }
   })

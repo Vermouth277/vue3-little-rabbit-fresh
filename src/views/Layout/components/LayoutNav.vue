@@ -1,23 +1,31 @@
 <script setup>
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/userStore'
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
 
-const flag = ref(true)
 const router = useRouter()
+const userStore = useUserStore()
+const { userInfo } = storeToRefs(userStore)
+const { clearUserInfo } = userStore
 
 const confirm = () => {
+  clearUserInfo()
   router.push('/login')
-  console.log('确认退出')
 }
 
+onMounted(() => {
+  console.log(userInfo.value);
+  
+})
 </script>
 
 <template>
   <nav class="app-topnav">
     <div class="container">
       <ul>
-        <template v-if="flag">
-          <li><a href="javascript:;"><i class="icofont icon-user"></i>苦艾酒</a></li>
+        <template v-if="userInfo?.token">
+          <li><a href="javascript:;"><i class="iconfont icon-person"></i><span>{{ userInfo.nickname }}</span></a></li>
           <li>
             <el-popconfirm title="确认退出吗？" confirmButtonText="确认" cancelButtonText="取消" @confirm="confirm">
               <template #reference>
@@ -30,7 +38,7 @@ const confirm = () => {
         </template>
 
         <template v-else>
-          <li><a href="javascript:;">请先登录</a></li>
+          <li><a href="javascript:;" @click="$router.push('/login')">请先登录</a></li>
           <li><a href="javascript:;">帮助中心</a></li>
           <li><a href="javascript:;">关于我们</a></li>
         </template>
@@ -50,14 +58,21 @@ const confirm = () => {
 
     li {
       a {
+        position: relative;
         padding: 0 15px;
         color: #cdcdcd;
         line-height: 1;
         display: inline-block;
 
         i {
-          font-size: 14px;
+          position: absolute;
+          top: -5px;
+          left: -7px;
+          font-size: 20px;
+          display: block;
+          margin-top: 3px;
           margin-right: 2px;
+          color: #cdcdcd;
         }
 
         &:hover {

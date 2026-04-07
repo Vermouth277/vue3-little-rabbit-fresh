@@ -1,11 +1,14 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { getDetailAPI } from '@/apis/detail';
 import DetailHot from './components/DetailHot.vue';
 import { watch } from 'vue';
+import { useCartStore } from '@/stores/cartStore';
+import { ElMessage } from 'element-plus';
 
 const route = useRoute();
+const cartStore = useCartStore
 const goods = ref({});
 
 const getDetailData = async () => {
@@ -23,7 +26,6 @@ watch(
 
 let skuObj = {}
 const skuChange = (sku) => {
-  console.log('父组件监听到了', sku);
   skuObj = sku
 }
 
@@ -33,7 +35,20 @@ const countChange = (value) => {
 }
 
 const addCart = () => {
-  console.log('加入购物车了', skuObj, count.value);
+  if (skuObj.skuId) {
+    cartStore.addCart({
+      id: goods.value.id,
+      name: goods.value.name,
+      picture: goods.value.mainPictures[0],
+      price: goods.value.price,
+      count: count.value,
+      skuId: skuObj.skuId,
+      attrsText: skuObj.specsText,
+      selected: true
+    })
+  } else {
+    ElMessage.warning('请选择规格')
+  }
 }
 </script>
 

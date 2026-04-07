@@ -6,9 +6,9 @@ import { useRouter } from 'vue-router';
 
 // 1.准备表单对象
 const form = ref({
-  account: '12056258290',
-  password: 'hm#qd@23',
-  agree: false
+  account: 'xiaotuxian001',
+  password: '123456',
+  agree: true
 })
 
 // 2.准备规则对象

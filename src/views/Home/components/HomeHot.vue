@@ -7,8 +7,6 @@ const hotList = ref({})
 
 const getHotList = async () => {
   const res = await getHotAPI();
-  console.log(res);
-  
   hotList.value = res.data.result;
 }
 
