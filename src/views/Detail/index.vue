@@ -8,7 +8,7 @@ import { useCartStore } from '@/stores/cartStore';
 import { ElMessage } from 'element-plus';
 
 const route = useRoute();
-const cartStore = useCartStore
+const cartStore = useCartStore()
 const goods = ref({});
 
 const getDetailData = async () => {

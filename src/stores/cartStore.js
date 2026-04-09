@@ -20,7 +20,7 @@ export const useCartStore = defineStore('cart', () => {
     const { skuId, count } =goods
     if (isLogin.value) {
       await insertCartAPI({ skuId, count })
-      updateNewList
+      updateNewList()
     } else {
       const item = cartList.value.find((item) => goods.skuId === item.skuId)
       if (item) {
@@ -34,6 +34,8 @@ export const useCartStore = defineStore('cart', () => {
   //删除
   const delCart = async (skuId) => {
     if (isLogin.value) {
+      console.log(skuId);
+      
       await delCartAPI([skuId])
       updateNewList()
     } else {
@@ -54,11 +56,11 @@ export const useCartStore = defineStore('cart', () => {
 
   //购物车列表
   //单选
-  const singleCheck = () => {
+  const singleCheck = (skuId, selected) => {
     const item = cartList.value.find((item) => item.skuId === skuId)
     item.selected = selected
   }
-  const allCheck = () => {
+  const allCheck = (selected) => {
     cartList.value.forEach(item => item.selected = selected)
   }
   //已选择数量

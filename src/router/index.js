@@ -31,6 +31,36 @@ export const router = createRouter({
           path: 'cartlist',
           name: 'Cart',
           component: () => import('@/views/CartList/index.vue')
+        },
+        {
+          path: 'checkout',
+          name: 'Checkout',
+          component: () => import('@/views/Checkout/index.vue')
+        },
+        {
+          path: 'pay/:id',
+          name: 'Pay',
+          component: () => import('@/views/Pay/index.vue')
+        },
+        {
+          path: 'paycallback',
+          name: 'PayBack',
+          component: () => import('@/views/Pay/PayBack.vue')
+        },
+        {
+          path: 'member',
+          name: 'Member',
+          component: () => import('@/views/Member/index.vue'),
+          children: [
+            {
+              path: '',
+              component: () => import('@/views/Member/components/UserInfo.vue')
+            },
+            {
+              path: 'order',
+              component: () => import('@/views/Member/components/UserOrder.vue')
+            }
+          ]
         }
       ]
     },

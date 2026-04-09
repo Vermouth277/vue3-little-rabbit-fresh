@@ -2,6 +2,18 @@
 import { useCartStore } from '@/stores/cartStore';
 
 const cartStore = useCartStore()
+
+const delCart = (skuId) => {
+  cartStore.delCart(skuId)
+}
+
+const singleCheck = (item, selected) => {
+  cartStore.singleCheck(item.skuId, selected)
+}
+
+const allCheck = (selected) => {
+  cartStore.allCheck(selected)
+}
 </script>
 
 <template>
@@ -49,7 +61,7 @@ const cartStore = useCartStore()
               </td>
               <td class="tc">
                 <p>
-                  <el-popconfirm title="确认删除吗?" confirm-button-text="确认" cancel-button-text="取消" @confirm="delCart(i)">
+                  <el-popconfirm title="确认删除吗?" confirm-button-text="确认" cancel-button-text="取消" @confirm="delCart(i.skuId)">
                     <template #reference>
                       <a href="javascript:;">删除</a>
                     </template>
